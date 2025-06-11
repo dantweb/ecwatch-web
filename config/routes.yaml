@@ -1,0 +1,7 @@
+# Remove any existing content and add:
+controllers:
+  resource:
+    path: ../src/Controller/
+    namespace: Dantweb\EcwServer\Controller
+  type: attribute
+  prefix: /
