@@ -22,10 +22,10 @@ class Kernel extends BaseKernel
     {
         $conf = $this->getConfigDir();
         // load your packages (if any)
-        $loader->load($conf.'/packages/*.yaml', 'glob');
+        $loader->load($conf . '/packages/*.yaml', 'glob');
         // load main services
-        $loader->load($conf.'/services.yaml', 'yaml');
+        $loader->load($conf . '/services.yaml', 'yaml');
         // load environment‑specific overrides (for `test` loads services_test.yaml)
-        $loader->load($conf.'/services_'.$this->environment.'.yaml', 'yaml');
+        $loader->load($conf . '/services_' . $this->environment . '.yaml', 'yaml');
     }
 }

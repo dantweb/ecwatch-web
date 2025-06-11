@@ -8,5 +8,4 @@ use Dantweb\Ecommwatch\Framework\Models\Domain\BaseModel;
 
 class WebBaseModel extends BaseModel
 {
-
 }

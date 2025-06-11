@@ -8,11 +8,9 @@ class UserService
 {
     public function getUserById(int $id)
     {
-
     }
 
     public function saveUser(array $data): bool
     {
-
     }
 }

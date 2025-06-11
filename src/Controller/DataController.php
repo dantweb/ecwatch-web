@@ -1,4 +1,6 @@
-<?php // app/web/src/Controller/DataController.php
+<?php
+
+// app/web/src/Controller/DataController.php
 
 
 namespace Dantweb\EcwServer\Controller;

@@ -1,4 +1,6 @@
-<?php // app/web/src/Controller/UserController.php
+<?php
+
+// app/web/src/Controller/UserController.php
 
 
 namespace Dantweb\EcwServer\Controller;
