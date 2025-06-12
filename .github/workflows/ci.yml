@@ -2,34 +2,41 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master", "main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master", "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
+      - name: Checkout project
         uses: actions/checkout@v4
-        
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.2
-          coverage: none
-          tools: composer:v2
+          php-version: '8.2'
+          extensions: json
+
+      - name: Create core directory
+        run: |
+          mkdir -p /app/web/core
+          cd /app/web/core
 
       - name: Clone loopai-core
         run: |
-          mkdir -p /app/web/core
-          git clone -b production https://github.com/dantweb/loopai-core.git /app/web/core
+          cd /app/web/core
+          git clone -b production https://github.com/dantweb/loopai-core.git .
 
-      - name: Install dependencies
+      - name: Install loopai-core dependencies
         run: |
-          composer install --working-dir=/app/web
-          composer update --working-dir=/app/web/core
+          cd /app/web/core
+          composer install --no-dev --optimize-autoloader
+
+      - name: Install project dependencies
+        run: |
+          composer install --no-dev --optimize-autoloader
 
       - name: Run tests
-        run: composer test --working-dir=/app/web
+        run: composer test
