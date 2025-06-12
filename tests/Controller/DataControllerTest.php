@@ -11,7 +11,8 @@ class DataControllerTest extends WebTestCase
         $client = static::createClient();
         $client->request('GET', '/data');
 
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertJson($client->getResponse()->getContent());
+        $response = $client->getResponse();
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertJson($response->getContent());
     }
 }

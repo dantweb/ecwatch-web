@@ -6,7 +6,7 @@ namespace Dantweb\EcwServer\Framework\Service;
 
 use Dantweb\EcwServer\Config\Defaults;
 
-class ModelResolver extends \Dantweb\Ecommwatch\Framework\Service\ModelResolver
+class ModelResolver
 {
     protected static string $configPath = Defaults::ECW_APP_CONFIG_PATH;
 }
