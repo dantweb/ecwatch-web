@@ -1,1 +1,1 @@
-add readme.md
+add readme.md and folder docs with txt demo file
