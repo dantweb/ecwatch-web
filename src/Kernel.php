@@ -17,15 +17,11 @@ class Kernel extends BaseKernel
         date_default_timezone_set('UTC');
     }
 
-
-    protected function configureContainer(ContainerBuilder $c, LoaderInterface $loader): void
+    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
-        $conf = $this->getConfigDir();
-        // load your packages (if any)
-        $loader->load($conf . '/packages/*.yaml', 'glob');
-        // load main services
-        $loader->load($conf . '/services.yaml', 'yaml');
-        // load environment‑specific overrides (for `test` loads services_test.yaml)
-        $loader->load($conf . '/services_' . $this->environment . '.yaml', 'yaml');
+        $configDir = $this->getConfigDir();
+        $loader->load($configDir . '/packages/*.yaml', 'glob');
+        $loader->load($configDir . '/services.yaml', 'yaml');
+        $loader->load($configDir . '/services_' . $this->environment . '.yaml', 'yaml');
     }
 }
