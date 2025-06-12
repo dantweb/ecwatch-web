@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Controller;
+namespace Dantweb\EcwServer\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
