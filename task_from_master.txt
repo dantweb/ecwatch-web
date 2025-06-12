@@ -1,2 +1,2 @@
-change github action so, that it makes git clone https://github.com/dantweb/loopai-core/tree/production into some 
+update github action so, that it makes git clone https://github.com/dantweb/loopai-core/tree/production into some 
 /app/web/core in the container, where /app/web is running and updates composer accordingly
