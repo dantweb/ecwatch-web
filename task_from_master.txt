@@ -1,1 +1,1 @@
-add file named next_task_test123.txt into folder docs/init
+add file CHANGELOG.md and internal structure, now it is v 1.0.0-rc.1 unpublished
