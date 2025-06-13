@@ -1,2 +1,1 @@
-create test which tests that container 
-is working properly and api can recieve 'get' and 'post' requests and rerturns correct json 
+fix github actions - phpunit should be running on every push on any branch
