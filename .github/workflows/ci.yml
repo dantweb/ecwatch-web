@@ -17,7 +17,7 @@ jobs:
           php-version: '8.2'
       - name: Install dependencies
         run: |
-          git clone --branch production --depth 1 https://github.com/dantweb/ecwatch-core.git core
+          git clone --branch main --depth 1 https://github.com/dantweb/ecwatch-core.git core
 
       - name: Install main project dependencies
         run: composer install --no-progress --no-suggest
