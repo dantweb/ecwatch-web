@@ -1,10 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace Dantweb\EcwServer;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
-use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 
 class Kernel extends BaseKernel
@@ -17,15 +17,22 @@ class Kernel extends BaseKernel
         date_default_timezone_set('UTC');
     }
 
-
-    protected function configureContainer(ContainerBuilder $c, LoaderInterface $loader): void
+    /**
+     * Returns the project directory.
+     */
+    public function getProjectDir(): string
     {
-        $conf = $this->getConfigDir();
-        // load your packages (if any)
-        $loader->load($conf.'/packages/*.yaml', 'glob');
-        // load main services
-        $loader->load($conf.'/services.yaml', 'yaml');
-        // load environment‑specific overrides (for `test` loads services_test.yaml)
-        $loader->load($conf.'/services_'.$this->environment.'.yaml', 'yaml');
+        return __DIR__ . '/..';
+    }
+
+    /**
+     * Configures the container using Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator.
+     */
+    protected function configureContainer(ContainerConfigurator $container): void
+    {
+        $configDir = $this->getProjectDir() . '/config';
+        $container->import($configDir . '/packages/*.yaml');
+        $container->import($configDir . '/services.yaml');
+        $container->import($configDir . '/services_' . $this->environment . '.yaml');
     }
 }

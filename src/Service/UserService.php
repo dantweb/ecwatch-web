@@ -6,13 +6,19 @@ namespace Dantweb\EcwServer\Service;
 
 class UserService
 {
-    public function getUserById(int $id)
+    /**
+     * @return array<string, mixed>|null
+     */
+    public function getUserById(int $id): ?array
     {
-
+        return null;
     }
 
+    /**
+     * @param array<string, mixed> $data
+     */
     public function saveUser(array $data): bool
     {
-
+        return true;
     }
 }

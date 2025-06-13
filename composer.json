@@ -1,5 +1,6 @@
 {
   "name": "dantweb/ecw-server",
+  "version": "1.0.0-rc.1",
   "type": "project",
   "license": "proprietary",
   "minimum-stability": "dev",
@@ -37,6 +38,7 @@
   },
   "scripts": {
     "phpcs": "phpcs --standard=PSR12 --extensions=php --colors -p src/ tests/",
+    "phpcbf": "phpcbf --standard=PSR12 --extensions=php --colors -p src/ tests/",
     "phpstan": "phpstan analyse src/ tests/ --level=8",
     "phpmd": "phpmd src/,tests/ text cleancode,codesize,controversial,design,naming,unusedcode",
     "test": "phpunit",
