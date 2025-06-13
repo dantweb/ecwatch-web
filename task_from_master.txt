@@ -1,1 +1,2 @@
-fix github actions - phpunit should be running on every push on any branch
+add github action to run actions from .github on every push 
+

@@ -1,6 +1,8 @@
 <?php
 
+
 declare(strict_types=1);
+
 
 namespace Dantweb\EcwServer\Tests\Controller;
 
@@ -12,9 +14,9 @@ class UserControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('GET', '/user');
-
         $response = $client->getResponse();
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertJson($response->getContent());
+
     }
 }
