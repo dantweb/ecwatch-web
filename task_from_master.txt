@@ -1,2 +1,66 @@
+<<<<<<< Updated upstream
 add github action to run actions from .github on every push 
 
+=======
+fix ci/cd
+
+Current runner version: '2.325.0'
+Runner Image Provisioner
+Operating System
+Runner Image
+GITHUB_TOKEN Permissions
+Secret source: Actions
+Prepare workflow directory
+Prepare all required actions
+Getting action download info
+Download immutable action package 'actions/checkout@v4'
+Download action repository 'shivammathur/setup-php@v2' (SHA:0f7f1d08e3e32076e51cae65eb0b0c871405b16e)
+Complete job name: build
+0s
+Run actions/checkout@v4
+Syncing repository: dantweb/ecwatch-web
+Getting Git version info
+Temporarily overriding HOME='/home/runner/work/_temp/9aed37a6-0cd5-41db-814e-e6b7efb4ac31' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+/usr/bin/git config --global --add safe.directory /home/runner/work/ecwatch-web/ecwatch-web
+Deleting the contents of '/home/runner/work/ecwatch-web/ecwatch-web'
+Initializing the repository
+Disabling automatic garbage collection
+Setting up auth
+Fetching the repository
+Determining the checkout info
+/usr/bin/git sparse-checkout disable
+/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Checking out the ref
+/usr/bin/git log -1 --format=%H
+5aa958e52a3141f6e35a74e16c314cd4c6f74e0b
+5s
+Run shivammathur/setup-php@v2
+/usr/bin/bash /home/runner/work/_actions/shivammathur/setup-php/v2/src/scripts/run.sh
+
+==> Setup PHP
+✓ PHP Installed PHP 8.2.28
+
+==> Setup Extensions
+✓ json Enabled
+
+==> Setup Tools
+✓ composer Added composer 2.8.9
+
+==> Setup Coverage
+✓ none Disabled Xdebug and PCOV
+
+==> Sponsor setup-php
+✓ setup-php https://setup-php.com/sponsor
+0s
+Run git clone --branch production --depth 1 https://github.com/dantweb/loopai-core.git core
+  git clone --branch production --depth 1 https://github.com/dantweb/loopai-core.git core
+  shell: /usr/bin/bash -e {0}
+  env:
+    COMPOSER_PROCESS_TIMEOUT: 0
+    COMPOSER_NO_INTERACTION: 1
+    COMPOSER_NO_AUDIT: 1
+Cloning into 'core'...
+fatal: could not read Username for 'https://github.com': No such device or address
+Error: Process completed with exit code 128.
+>>>>>>> Stashed changes
