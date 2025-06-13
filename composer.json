@@ -28,12 +28,14 @@
   },
   "autoload": {
     "psr-4": {
-      "Dantweb\\EcwServer\\": "src/"
+      "Dantweb\\EcwServer\\": "src/",
+      "Dantweb\\Ecommwatch\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Dantweb\\EcwServer\\Tests\\": "tests/"
+      "Dantweb\\EcwServer\\Tests\\": "tests/",
+      "Dantweb\\Ecommwatch\\Tests\\": "tests/"
     }
   },
   "scripts": {
