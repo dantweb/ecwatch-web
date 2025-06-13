@@ -2,25 +2,27 @@ name: CI
 
 on:
   push:
+<<<<<<< Updated upstream
   pull_request:
+=======
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+>>>>>>> Stashed changes
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up PHP
+      - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-          extensions: json
-          coverage: none
-
-      - name: Clone loopai-core
+      - name: Install dependencies
         run: |
+<<<<<<< Updated upstream
           git clone --branch production --depth 1 https://github.com/dantweb/loopai-core.git core
 
       - name: Install main project dependencies
@@ -61,3 +63,17 @@ jobs:
       - name: Run checks
         run: composer check
 
+=======
+          composer install --prefer-dist --no-progress --no-suggest
+      - name: Run static analysis and tests
+        run: |
+          composer phpcs
+          composer phpstan
+          composer phpmd
+          composer test
+      - name: Clone loopai-core repository
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git clone --branch production --depth 1 https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/dantweb/loopai-core.git core
+>>>>>>> Stashed changes
