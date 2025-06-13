@@ -1,5 +1,7 @@
 # ECW Server Project
 
+Version: 1.0.0-rc.1 (Unpublished)
+
 This project implements an e-commerce watch server using Symfony framework.
 
 ## Features
