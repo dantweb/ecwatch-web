@@ -1,0 +1,28 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Clone Core Repository
+        run: |
+          # Ensure the core repository is cloned in the correct location
+          if [ ! -d "app/web/core" ]; then
+            mkdir -p app/web
+            git clone ./app/web/core app/web/core || echo "Core repository not found. Ensure it exists at ./app/web/core."
+          fi
+
+      - name: Install Dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Run Tests
+        run: composer test

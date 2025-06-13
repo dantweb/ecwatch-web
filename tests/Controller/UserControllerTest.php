@@ -1,8 +1,6 @@
 <?php
 
-
 declare(strict_types=1);
-
 
 namespace Dantweb\EcwServer\Tests\Controller;
 
@@ -17,6 +15,6 @@ class UserControllerTest extends WebTestCase
         $response = $client->getResponse();
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertJson($response->getContent());
-
+        // No extra blank line before closing brace
     }
 }

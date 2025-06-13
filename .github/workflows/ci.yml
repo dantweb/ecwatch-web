@@ -2,57 +2,39 @@ name: CI
 
 on:
   push:
+    branches: [main]
   pull_request:
-
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
+
+      - name: Clone ecwatch-web
+        run: |
+          git clone https://github.com/example/ecwatch-web.git
+
+      - name: Clone core repository into app/core
+        run: |
+          mkdir -p app/core
+          git clone https://github.com/example/core.git app/core
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-      - name: Install dependencies
-        run: |
-          git clone --branch production --depth 1 https://github.com/dantweb/loopai-core.git core
-
-      - name: Install main project dependencies
-        run: composer install --no-progress --no-suggest
-
-      - name: Install loopai-core dependencies
-        working-directory: ./core
-        run: composer install --no-progress --no-suggest
-
-      - name: Run tests
-        run: composer test
-
-  tests:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        php: [8.2]
-
-    env:
-      KERNEL_CLASS: 'App\\Kernel'
-      APP_SECRET: '$ecretf0rt3st'
-      SYMFONY_DEPRECATIONS_HELPER: 999999
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: json
-          coverage: none
+          extensions: mbstring, json, xml, dom
+          ini-values: post_max_size=256M, upload_max_filesize=256M
 
       - name: Install dependencies
-        run: composer install --no-progress --prefer-dist
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run static analysis and tests
+        run: composer check
 
       - name: Run static analysis and tests
         run: |

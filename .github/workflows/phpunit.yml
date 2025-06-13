@@ -1,25 +1,26 @@
-name: PHPUnit Tests
+name: PHP Unit Tests
 
 on:
   push:
-    branches: [ "*" ]
+  pull_request:
+  
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-          coverage: none
+          extensions: mbstring, intl, json
+          ini-values: "display_errors=1\nerror_reporting=-1"
 
       - name: Install dependencies
-        run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+        run: composer install --prefer-dist --no-progress --no-suggest
 
-      - name: Run PHPUnit tests
-        run: ./vendor/bin/phpunit --configuration=phpunit.dist.xml
+      - name: Run tests
+        run: composer test

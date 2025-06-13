@@ -28,14 +28,23 @@
   },
   "autoload": {
     "psr-4": {
-      "Dantweb\\EcwServer\\": "src/"
+      "Dantweb\\EcwServer\\": "src/",
+      "Dantweb\\EcwServer\\Atomizer\\": "src/Modules/Atomizer/src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Dantweb\\EcwServer\\Tests\\": "tests/"
+      "Dantweb\\EcwServer\\Tests\\": "tests/",
+      "Dantweb\\EcwServer\\Atomizer\\Tests\\": "src/Modules/Atomizer/tests/"
     }
   },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "./app/web/core",
+      "options": { "symlink": true }
+    }
+  ],
   "scripts": {
     "phpcs": "phpcs --standard=PSR12 --extensions=php --colors -p src/ tests/",
     "phpcbf": "phpcbf --standard=PSR12 --extensions=php --colors -p src/ tests/",
