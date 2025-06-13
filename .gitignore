@@ -8,6 +8,7 @@
 /var/cache
 !/var/config
 /vendor/
+/
 ###< symfony/framework-bundle ###
 
 ###> phpstan/phpstan ###
