@@ -1,13 +1,15 @@
 #!/usr/bin/env php
 <?php
 
+declare(strict_types=1);
+
 use Dantweb\EcwServer\Kernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 
 require __DIR__.'/../vendor/autoload.php';
 
 $env = $_SERVER['APP_ENV'] ?? 'dev';
-$debug = (bool) ($_SERVER['APP_DEBUG'] ?? false);
+$debug = (bool) ($_SERVER['APP_DEBUG'] ?? ($env !== 'prod'));
 
 $kernel = new Kernel($env, $debug);
 $application = new Application($kernel);
