@@ -1,0 +1,12 @@
+fix issue with /app/core in ci.yaml. check that the core is being cloned in /app/web/core and the proper changes are done to the composer.json 
+
+Run composer install --prefer-dist --no-progress --no-suggest
+You are using the deprecated option "--no-suggest". It has no effect and will break in Composer 3.
+No composer.lock file present. Updating dependencies to latest instead of installing from lock file. See https://getcomposer.org/install for more information.
+Loading composer repositories with package information
+Error: The `url` supplied for the path (./app/core) repository does not exist
+
+In PathRepository.php line 163:
+                                                                          
+  The `url` supplied for the path (./app/core) repository does not exist  
+                                                                          
