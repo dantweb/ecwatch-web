@@ -1,6 +1,0 @@
-keep only one ci/cd file which does:
-1. ckones the ecwatch-web
-2. clones core in app/core
-3. comfigures composer and repo paths in it
-4. runs statuc code tests
-5. runs phpunit tests
