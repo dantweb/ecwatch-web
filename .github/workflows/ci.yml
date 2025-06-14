@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI
 
 on:
   push:
@@ -10,34 +10,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          extensions: [ "mbstring", "intl" ]
-          ini-values: |
-            post_max_size=256M
-            upload_max_filesize=256M
-
-      - name: Clone ecwatch-web Repository
+      - name: Clone ecwatch-web
         run: |
-          # Replace the URL below with the actual repository URL for ecwatch-web
-          git clone https://example.com/ecwatch-web.git
-
-      - name: Clone core into app/core
+          git clone https://github.com/your-org/ecwatch-web.git
+      - name: Clone core repository into app/core
         run: |
-          mkdir -p app
-          # Replace the URL below with the actual repository URL for core
-          git clone https://example.com/core.git app/core
-
-      - name: Install Composer Dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
-
-      - name: Run Static Code Analysis
+          mkdir -p app/core
+          git clone https://github.com/your-org/core.git app/core
+      - name: Install Composer dependencies
+        run: composer install --no-progress --no-suggest
+      - name: Run static analysis (PHPCS, PHPStan, PHPMD)
         run: composer check
-
-      - name: Run PHPUnit Tests
+      - name: Run PHPUnit tests
         run: composer test
