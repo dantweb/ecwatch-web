@@ -29,13 +29,13 @@
   "autoload": {
     "psr-4": {
       "Dantweb\\EcwServer\\": "src/",
-      "Dantweb\\Ecommwatch\\": "src/"
+      "Dantweb\\Atomizer\\": "src/Modules/Atomizer/src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
       "Dantweb\\EcwServer\\Tests\\": "tests/",
-      "Dantweb\\Ecommwatch\\Tests\\": "tests/"
+      "Dantweb\\Atomizer\\Tests\\": "src/Modules/Atomizer/tests/"
     }
   },
   "scripts": {
