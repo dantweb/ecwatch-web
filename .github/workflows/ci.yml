@@ -19,7 +19,7 @@ jobs:
           find . -maxdepth 1 -not -path "./app" -not -path "." | xargs -I {} mv {} app/web/
 
 
-      - name: Clone loopai-core
+      - name: Clone ecwatch-core
         run: git clone -b main https://github.com/dantweb/ecwatch-core.git app/web/core
 
       - name: Set up PHP
