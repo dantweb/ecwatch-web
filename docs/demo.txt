@@ -1,6 +1,0 @@
-This is a demo documentation file showing the structure of ECW Server documentation.
-
-You can add:
-- Configuration guides
-- API references
-- Plugin development tutorials

@@ -1,6 +1,5 @@
-keep only one ci/cd file which does:
-1. ckones the ecwatch-web
-2. clones core in app/core
-3. comfigures composer and repo paths in it
-4. runs statuc code tests
-5. runs phpunit tests
+create a symfony (v7.2 php8.3) app and a Docker file. App, when running in docker listens to https port 5050 and has endpoints:
+/test (get)
+/login (get)
+/get/users/ (get)
+/put/user (put request with new user data)
