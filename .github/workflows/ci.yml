@@ -15,7 +15,9 @@ jobs:
       - name: Create directory structure
         run: |
           mkdir -p app/web
-          mv . app/web
+          # Move specific files/directories instead of the entire directory
+          find . -maxdepth 1 -not -path "./app" -not -path "." | xargs -I {} mv {} app/web/
+
 
       - name: Clone loopai-core
         run: git clone -b production https://github.com/dantweb/loopai-core.git app/web/core
@@ -32,8 +34,10 @@ jobs:
 
       - name: Install dependencies for ecw-server
         working-directory: app/web
-        run: composer install
+        run: |
+          composer install
 
       - name: Run tests
         working-directory: app/web
-        run: composer test
+        run: |
+          composer test
