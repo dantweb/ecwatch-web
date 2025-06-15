@@ -1,5 +1,19 @@
+----- start of task ---
+check if the code in this repo corresponds the task below
 create a symfony (v7.2 php8.3) app and a Docker file. App, when running in docker listens to https port 5050 and has endpoints:
 /test (get)
 /login (get)
 /get/users/ (get)
 /put/user (put request with new user data)
+----- end of task ---
+----- start of task ---
+fix ci.yaml 
+Run git clone https://github.com/example/ecwatch-web.git
+  git clone https://github.com/example/ecwatch-web.git
+  shell: /usr/bin/bash -e {0}
+Cloning into 'ecwatch-web'...
+fatal: could not read Username for 'https://github.com': No such device or address
+Error: Process completed with exit code 128.
+
+https://github.com/dantweb/ecwatch-web/ - this is correct branch
+----- end of task ---
