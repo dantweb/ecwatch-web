@@ -41,7 +41,7 @@
   "repositories": [
     {
       "type": "path",
-      "url": "./app/web/core",
+      "url": "./app/core",
       "options": { "symlink": true }
     }
   ],

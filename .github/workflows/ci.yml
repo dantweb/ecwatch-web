@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Clone ecwatch-web
+        run: |
+          git clone https://github.com/example/ecwatch-web.git
+
+      - name: Clone core repository into app/core
+        run: |
+          mkdir -p app/core
+          git clone https://github.com/example/core.git app/core
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, json, xml, dom
+          ini-values: post_max_size=256M, upload_max_filesize=256M
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run static analysis and tests
+        run: composer check
+
+      - name: Run static analysis and tests
+        run: |
+          composer phpcs
+          composer phpstan
+          composer phpmd
+          composer test
+     
