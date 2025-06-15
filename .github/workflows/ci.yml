@@ -20,7 +20,7 @@ jobs:
 
 
       - name: Clone loopai-core
-        run: git clone -b production https://github.com/dantweb/loopai-core.git app/web/core
+        run: git clone -b production https://github.com/dantweb/ecwatch-core.git app/web/core
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
