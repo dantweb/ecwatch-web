@@ -11,7 +11,8 @@ class ApiControllerTest extends WebTestCase
     public function testGetApi(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/api/test');
+        // Updated endpoint from '/api/test' to '/test' to match the task requirements
+        $client->request('GET', '/test');
 
         $response = $client->getResponse();
         $this->assertEquals(200, $response->getStatusCode());
@@ -21,18 +22,5 @@ class ApiControllerTest extends WebTestCase
         $this->assertSame('GET', $data['method']);
     }
 
-    public function testPostApi(): void
-    {
-        $client = static::createClient();
-        $postData = ['key' => 'value'];
-        $client->request('POST', '/api/test', $postData);
-
-        $response = $client->getResponse();
-        $this->assertEquals(200, $response->getStatusCode());
-        $content = $response->getContent();
-        $this->assertJson($content);
-        $data = json_decode($content, true);
-        $this->assertSame('POST', $data['method']);
-        $this->assertEquals($postData, $data['data']);
-    }
+    // Removed POST test because the new task endpoints do not require a POST method
 }

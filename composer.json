@@ -5,7 +5,7 @@
   "license": "proprietary",
   "minimum-stability": "dev",
   "require": {
-    "php": ">=8.2.0",
+    "php": ">=8.3.0",
     "ext-json": "*",
     "symfony/config": "^7.2",
     "symfony/console": "^7.2",
@@ -76,7 +76,7 @@
       "symfony/runtime": true
     },
     "platform": {
-      "php": "8.2.0"
+      "php": "8.3.0"
     }
   }
 }

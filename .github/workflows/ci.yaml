@@ -1,28 +1,37 @@
-name: CI Workflow
+name: CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main", "develop", "feature/*" ]
   pull_request:
+    branches: [ "main", "develop" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Clone Core Repository
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, intl, pdo_mysql
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Fix Clone Repository URL
         run: |
-          # Ensure the core repository is cloned in the correct location
-          if [ ! -d "app/web/core" ]; then
-            mkdir -p app/web
-            git clone ./app/web/core app/web/core || echo "Core repository not found. Ensure it exists at ./app/web/core."
-          fi
+          # Cloning the correct repository as per task instructions
+          git clone https://github.com/dantweb/ecwatch-web.git
 
-      - name: Install Dependencies
-        run: composer install --prefer-dist --no-progress
+      - name: Run PHPStan
+        run: composer phpstan
 
-      - name: Run Tests
+      - name: Run PHPCS
+        run: composer phpcs
+
+      - name: Run PHPUnit tests
         run: composer test
