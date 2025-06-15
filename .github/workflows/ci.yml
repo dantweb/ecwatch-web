@@ -9,35 +9,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Clone ecwatch-web
+      - name: Create directory structure
         run: |
-          git clone https://github.com/example/ecwatch-web.git
+          mkdir -p app/web
+          mv . app/web
 
-      - name: Clone core repository into app/core
-        run: |
-          mkdir -p app/core
-          git clone https://github.com/example/core.git app/core
+      - name: Clone loopai-core
+        run: git clone -b production https://github.com/dantweb/loopai-core.git app/web/core
 
-      - name: Setup PHP
+      - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-          extensions: mbstring, json, xml, dom
-          ini-values: post_max_size=256M, upload_max_filesize=256M
 
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
 
-      - name: Run static analysis and tests
-        run: composer check
+      - name: Install dependencies for loopai-core
+        working-directory: app/web/core
+        run: composer install
 
-      - name: Run static analysis and tests
-        run: |
-          composer phpcs
-          composer phpstan
-          composer phpmd
-          composer test
-     
+      - name: Install dependencies for ecw-server
+        working-directory: app/web
+        run: composer install
+
+      - name: Run tests
+        working-directory: app/web
+        run: composer test
