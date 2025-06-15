@@ -1,19 +1,24 @@
 ----- start of task ---
-check if the code in this repo corresponds the task below
-create a symfony (v7.2 php8.3) app and a Docker file. App, when running in docker listens to https port 5050 and has endpoints:
-/test (get)
-/login (get)
-/get/users/ (get)
-/put/user (put request with new user data)
------ end of task ---
------ start of task ---
-fix ci.yaml 
-Run git clone https://github.com/example/ecwatch-web.git
-  git clone https://github.com/example/ecwatch-web.git
-  shell: /usr/bin/bash -e {0}
-Cloning into 'ecwatch-web'...
-fatal: could not read Username for 'https://github.com': No such device or address
-Error: Process completed with exit code 128.
+update phpunit.yaml
+add to the yaml
+git clone https://github.com/dantweb/ecwatch-core into /app/core
+and set repositories path in the composer with cli commands (add them to the github action)
 
-https://github.com/dantweb/ecwatch-web/ - this is correct branch
+0s
+Run composer install --prefer-dist --no-progress --no-suggest
+You are using the deprecated option "--no-suggest". It has no effect and will break in Composer 3.
+No composer.lock file present. Updating dependencies to latest instead of installing from lock file. See https://getcomposer.org/install for more information.
+Loading composer repositories with package information
+Error: The `url` supplied for the path (./app/web/core) repository does not exist
+
+In PathRepository.php line 163:
+
+  The `url` supplied for the path (./app/web/core) repository does not exist
+
+
+install [--prefer-source] [--prefer-dist] [--prefer-install PREFER-INSTALL] [--dry-run] [--download-only] [--dev] [--no-suggest] [--no-dev] [--no-autoloader] [--no-progress] [--no-install] [--audit] [--audit-format AUDIT-FORMAT] [-v|vv|vvv|--verbose] [-o|--optimize-autoloader] [-a|--classmap-authoritative] [--apcu-autoloader] [--apcu-autoloader-prefix APCU-AUTOLOADER-PREFIX] [--ignore-platform-req IGNORE-PLATFORM-REQ] [--ignore-platform-reqs] [--] [<packages>...]
+
+Error: Process completed with exit code 1.
+
+
 ----- end of task ---
